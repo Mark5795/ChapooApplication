@@ -16,5 +16,20 @@ namespace ChapooApplication
         {
             InitializeComponent();
         }
+
+        private void textBox_name_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox_password_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_logIn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
