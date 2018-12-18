@@ -10,7 +10,7 @@ namespace ChapooApplication.Logica
 {
     class LoginService
     {
-        private EmployeeDAL employeeDAL = new EmployeeDAL();
+        private IEmployeeDAL employeeDAL = new EmployeeDAL();
 
         public bool CheckLogin(Employee employee)
         {

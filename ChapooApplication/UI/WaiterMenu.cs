@@ -46,7 +46,15 @@ namespace ChapooApplication.UI
 
         private void button_tables_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            Tables tables = new Tables();
+            tables.FormClosed += new FormClosedEventHandler(back_FormClosed);
+            tables.Show();
+        }
 
+        void back_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show();
         }
     }
 }
