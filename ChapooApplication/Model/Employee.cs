@@ -30,5 +30,16 @@ namespace ChapooApplication.Model
             this.InternationalBankAccountNumber = InternationalBankAccountNumber;
             this.function = function;
         }
+
+        public Employee()
+        {
+
+        }
+
+        public Employee(int Id, string Password)
+        {
+            this.Id = Id;
+            this.Password = Password;
+        }
     }
 }
