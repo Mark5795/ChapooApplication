@@ -38,38 +38,39 @@ namespace ChapooApplication.UI
             foreach (Table table in tableList)
             {
                 int id = table.TableId;
-                Button tafelbtn = new Button();
-                tafelbtn.Text = table.TableId.ToString();
-                tafelbtn.Font = new Font(tafelbtn.Font.FontFamily, 16);
-                tafelbtn.Enabled = true;
+                Button tablebtn = new Button();
+                tablebtn.Text = table.TableId.ToString();
+                tablebtn.Font = new Font(tablebtn.Font.FontFamily, 16);
+                tablebtn.Enabled = true;
 
-                tafelbtn.Click += (s, e) =>
+                tablebtn.Click += (s, e) =>
                 {
-
+                    tableService.ChangeTableStatus(table);
+                    GetTables();
                 };
 
-                tafelbtn.Size = button_Table.Size;
+                tablebtn.Size = button_Table.Size;
 
                 switch (tableService.GetTableStatus(table))
                 {
                     case TableStatus.Available:
-                        tafelbtn.BackColor = Color.Green;
+                        tablebtn.BackColor = Color.Green;
                         break;
 
                     case TableStatus.Reserved:
-                        tafelbtn.BackColor = Color.Orange;
+                        tablebtn.BackColor = Color.Orange;
                         break;
 
                     case TableStatus.Taken:
-                        tafelbtn.BackColor = Color.Red;
+                        tablebtn.BackColor = Color.Red;
                         break;
 
                     default:
                         break;
                 }
 
-                tafelbtn.ForeColor = Color.White;
-                tableLayoutPanel1.Controls.Add(tafelbtn);
+                tablebtn.ForeColor = Color.White;
+                tableLayoutPanel1.Controls.Add(tablebtn);
             }
         }
 

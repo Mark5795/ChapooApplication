@@ -8,7 +8,7 @@ namespace ChapooApplication.Model
 {
     public class Table
     {
-        public int TableId { get; set; }
+        public int TableId { get; private set; }
         public int TableStatus { get; set; }
 
         public Table(int TableId, int TableStatus)

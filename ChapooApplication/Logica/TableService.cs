@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ChapooApplication.Logica
 {
-    class TableService
+    public class TableService
     {
         private ITableDAL tableDAL = new TableDAL();
  
@@ -27,7 +27,7 @@ namespace ChapooApplication.Logica
             return tableStatus;
         }
 
-        public int ChangeTableStatus(Table table)
+        public void ChangeTableStatus(Table table)
         {
             int status;
 
@@ -40,7 +40,7 @@ namespace ChapooApplication.Logica
                 status = table.TableStatus + 1;
             }
 
-            return status;
+            tableDAL.ChangeTableStatus(status, table);
         }
     }
 }
