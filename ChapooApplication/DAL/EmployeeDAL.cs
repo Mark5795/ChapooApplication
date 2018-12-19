@@ -11,7 +11,7 @@ namespace ChapooApplication.DAL
 {
     class EmployeeDAL : IEmployeeDAL
     {
-        public Employee GetEmployee(int Id)
+        public Employee GetEmployee(int EmployeeId)
         {
             Employee employee = new Employee();
 
@@ -19,16 +19,16 @@ namespace ChapooApplication.DAL
             SqlConnection sql = conn.Dbconnection();
             sql.Open();
 
-            string query = "Select * FROM Employee WHERE Id = @Id";
+            string query = "Select * FROM Employee WHERE EmployeeId = @EmployeeId";
 
             StringBuilder sb = new StringBuilder();            
                         
             sb.Append(query);
             String sqlquery = sb.ToString();
 
-            SqlParameter id = new SqlParameter("@Id", SqlDbType.Int, 3);
+            SqlParameter employeeId = new SqlParameter("@EmployeeId", SqlDbType.Int, 3);
             SqlCommand command = new SqlCommand(query, sql);
-            command.Parameters.Add(id).Value = Id;
+            command.Parameters.Add(employeeId).Value = EmployeeId;
             SqlDataReader reader = command.ExecuteReader();
             //command.Prepare();
 
@@ -43,7 +43,7 @@ namespace ChapooApplication.DAL
                 string InternationBankAccountNumber = reader.GetString(7);
                 Function function = (Function)reader.GetInt32(8);
 
-                employee = new Employee(Id, Password, FirstName, LastName, BirthDay, PhoneNumber, Email, InternationBankAccountNumber, function);
+                employee = new Employee(EmployeeId, Password, FirstName, LastName, BirthDay, PhoneNumber, Email, InternationBankAccountNumber, function);
             }
 
             reader.Close();
@@ -54,9 +54,9 @@ namespace ChapooApplication.DAL
 
         public bool CheckEmployeeCredentials(Employee employee)
         {
-            if (GetEmployee(employee.Id).Id == employee.Id)
+            if (GetEmployee(employee.EmployeeId).EmployeeId == employee.EmployeeId)
             {
-                if (GetEmployee(employee.Id).Password == employee.Password)
+                if (GetEmployee(employee.EmployeeId).Password == employee.Password)
                 {
                     return true;
                 }
@@ -67,7 +67,7 @@ namespace ChapooApplication.DAL
 
     public interface IEmployeeDAL
     {
-        Employee GetEmployee(int Id);
+        Employee GetEmployee(int EmployeeId);
         bool CheckEmployeeCredentials(Employee employee);
     }
 }

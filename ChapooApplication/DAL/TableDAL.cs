@@ -55,18 +55,18 @@ namespace ChapooApplication.DAL
 
             sql.Open();
 
-            string query = "UPDATE RestaurantTable Set TableStatus = @TableStatus WHERE Id = @Id";
+            string query = "UPDATE RestaurantTable Set TableStatus = @TableStatus WHERE TableId = @TableId";
 
             StringBuilder sb = new StringBuilder();
             sb.Append(query);
             String sqlquery = sb.ToString();
 
-            SqlParameter Id = new SqlParameter("@Id", SqlDbType.Int, 3);
+            SqlParameter TableId = new SqlParameter("@TableId", SqlDbType.Int, 3);
             SqlParameter TableStatus = new SqlParameter("@tableStatus", SqlDbType.Int, 3);
 
             SqlCommand command = new SqlCommand(query, sql);
 
-            command.Parameters.Add(Id).Value = table.TableId;
+            command.Parameters.Add(TableId).Value = table.TableId;
             command.Parameters.Add(TableStatus).Value = tableStatus;
 
             command.ExecuteNonQuery();

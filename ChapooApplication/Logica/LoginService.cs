@@ -23,7 +23,7 @@ namespace ChapooApplication.Logica
         
         public Function funtion(Employee employee)
         {
-            Function function = employeeDAL.GetEmployee(employee.Id).function;
+            Function function = employeeDAL.GetEmployee(employee.EmployeeId).function;
             return function;
         }
     }

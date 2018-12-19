@@ -51,9 +51,11 @@
     <Compile Include="DAL\EmployeeDAL.cs" />
     <Compile Include="DAL\TableDAL.cs" />
     <Compile Include="Logica\LoginService.cs" />
+    <Compile Include="Logica\OverviewService.cs" />
     <Compile Include="Logica\TableService.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Function.cs" />
+    <Compile Include="Model\MenuItem.cs" />
     <Compile Include="Model\Table.cs" />
     <Compile Include="Model\TableStatus.cs" />
     <Compile Include="UI\Overview.cs">

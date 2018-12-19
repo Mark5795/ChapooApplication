@@ -45,14 +45,14 @@ namespace ChapooApplication
                                 break;
 
                             case Function.Barkeeper:
-                                Overview bar = new Overview(employee.function);
+                                Overview bar = new Overview(employee.function, employee);
                                 bar.FormClosed += new FormClosedEventHandler(login_FormClosed);
                                 bar.Show();
                                 this.Hide();
                                 break;
 
                             case Function.Cook:
-                                Overview kitchen = new Overview(employee.function);
+                                Overview kitchen = new Overview(employee.function, employee);
                                 kitchen.FormClosed += new FormClosedEventHandler(login_FormClosed);
                                 kitchen.Show();
                                 this.Hide();

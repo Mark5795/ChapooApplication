@@ -8,7 +8,7 @@ namespace ChapooApplication.Model
 {
     public class Employee
     {
-        public int Id { get; set; }
+        public int EmployeeId { get; set; }
         public string Password { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -18,9 +18,9 @@ namespace ChapooApplication.Model
         public string InternationalBankAccountNumber { get; set; }
         public Function function { get; set; }
 
-        public Employee(int Id, string Password, string FirstName, string LastName, DateTime BirthDay, int PhoneNumber, string Email, string InternationalBankAccountNumber, Function function)
+        public Employee(int EmployeeId, string Password, string FirstName, string LastName, DateTime BirthDay, int PhoneNumber, string Email, string InternationalBankAccountNumber, Function function)
         {
-            this.Id = Id;
+            this.EmployeeId = EmployeeId;
             this.Password = Password;
             this.FirstName = FirstName;
             this.LastName = LastName;
@@ -36,9 +36,9 @@ namespace ChapooApplication.Model
 
         }
 
-        public Employee(int Id, string Password)
+        public Employee(int EmployeeId, string Password)
         {
-            this.Id = Id;
+            this.EmployeeId = EmployeeId;
             this.Password = Password;
         }
     }
