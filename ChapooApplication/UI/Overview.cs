@@ -37,22 +37,21 @@ namespace ChapooApplication.UI
         {
             OverviewService overviewService = new OverviewService();
 
-            ////vul de list met menuitems
-            //List<Model.BestelItem> LijstBestelItem = Overzicht.BestelItemLijst(functie);
+            List<OrderItem> OrderItemList = overviewService.BestelItemLijst(functie);
 
 
-            ////maak voor elk item een kolom
-            //foreach (Model.BestelItem Item in LijstBestelItem)
-            //{
-            //    ListViewItem rij = new ListViewItem(Item.Bestelling.BestellingId.ToString());
-            //    rij.SubItems.Add(Item.Item.Naam);
-            //    rij.SubItems.Add(Item.Aantal.ToString());
-            //    rij.SubItems.Add(Item.Tafel.ToString());
-            //    rij.SubItems.Add(Item.Commentaar);
-            //    rij.Tag = Item;
-            //    lst_Overzicht.Items.Add(rij);
+            //maak voor elk item een kolom
+            foreach (Model.OrderItem Item in OrderItemList)
+            {
+                ListViewItem rij = new ListViewItem(Item.Bestelling.BestellingId.ToString());
+                rij.SubItems.Add(Item.Item.Naam);
+                rij.SubItems.Add(Item.Aantal.ToString());
+                rij.SubItems.Add(Item.Tafel.ToString());
+                rij.SubItems.Add(Item.Commentaar);
+                rij.Tag = Item;
+                lst_Overzicht.Items.Add(rij);
 
-            //}
+            }
         }
 
         private void button_LogOut_Click(object sender, EventArgs e)

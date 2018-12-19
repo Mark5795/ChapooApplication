@@ -10,5 +10,6 @@ namespace ChapooApplication.Logica
 {
     class OverviewService
     {
+
     }
 }
