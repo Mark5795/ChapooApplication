@@ -1,0 +1,1 @@
+﻿INSERT INTO [dbo].[OrderItem] ([OrderItemId], [OrderId], [MenuItemId], [TableId], [Count], [OrderStatus], [Comment]) VALUES (2, 23, 2, 1, 1,2, N'Klant met noten allergie!')
