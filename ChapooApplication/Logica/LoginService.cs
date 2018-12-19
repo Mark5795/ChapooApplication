@@ -20,13 +20,11 @@ namespace ChapooApplication.Logica
             }
             return false;
         }
-
-        //public Function funtion(Employee employee)
-        //{
-        //    EmployeeDAL employee = new EmployeeDAL();
-        //    //Function funtion = Werknemer_Object.EmployeeGetFunctie(employee);
-
-        //    return funtion;
-        //}
+        
+        public Function funtion(Employee employee)
+        {
+            Function function = employeeDAL.GetEmployee(employee.Id).function;
+            return function;
+        }
     }
 }

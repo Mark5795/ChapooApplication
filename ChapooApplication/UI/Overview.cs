@@ -1,0 +1,54 @@
+﻿using ChapooApplication.Model;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace ChapooApplication.UI
+{
+    public partial class Overview : Form
+    {
+        //private Function function;
+        public Overview(Function function)
+        {
+            InitializeComponent();
+
+            if (function == Function.Barkeeper)
+            {
+                label_Overview.Text = "Bar Overview";
+            }
+            else
+            {
+                label_Overview.Text = "Kitchen Overview";
+            }
+            GetOrders(function);
+        }
+
+        private void GetOrders(Function function)
+        {
+
+        }
+
+        private void button_LogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login log = new Login();
+            log.Show();
+        }
+
+        private void button_Refresh_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_OrderReady_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}

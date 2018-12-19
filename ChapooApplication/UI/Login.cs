@@ -20,34 +20,59 @@ namespace ChapooApplication
             InitializeComponent();
         }
 
-        private void textBox_Id_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_password_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button_logIn_Click(object sender, EventArgs e)
         {
             try
             {
                 int Employeeid = int.Parse(textBox_Id.Text);
-                string EmployeePassword = textBox_password.Text; 
+                string EmployeePassword = textBox_password.Text;
                 Employee employee = new Employee(Employeeid, EmployeePassword);
                 LoginService login = new LoginService();
+
+                Function function = login.funtion(employee);
+
                 if (login.CheckLogin(employee))
                 {
-                    WaiterMenu menu = new WaiterMenu();
-                    menu.FormClosed += new FormClosedEventHandler(login_FormClosed);
-                    menu.Show();
-                    this.Hide();
-                }
-                else
-                {
-                    MessageBox.Show("Wrong ID");
+                    if (Enum.IsDefined(typeof(Function), function))
+                    {
+                        switch (function)
+                        {
+                            case Function.Owner:
+                                OwnerMenu main = new OwnerMenu();
+                                main.FormClosed += new FormClosedEventHandler(login_FormClosed);
+                                main.Show();
+                                this.Hide();
+                                break;
+
+                            case Function.Barkeeper:
+                                Overview bar = new Overview(employee.function);
+                                bar.FormClosed += new FormClosedEventHandler(login_FormClosed);
+                                bar.Show();
+                                this.Hide();
+                                break;
+
+                            case Function.Cook:
+                                Overview kitchen = new Overview(employee.function);
+                                kitchen.FormClosed += new FormClosedEventHandler(login_FormClosed);
+                                kitchen.Show();
+                                this.Hide();
+                                break;
+
+                            case Function.Waiter:
+                                WaiterMenu menu = new WaiterMenu();
+                                menu.FormClosed += new FormClosedEventHandler(login_FormClosed);
+                                menu.Show();
+                                this.Hide();
+                                break;
+
+                            default:
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Wrong ID");
+                    }
                 }
             }
             catch (Exception error)
