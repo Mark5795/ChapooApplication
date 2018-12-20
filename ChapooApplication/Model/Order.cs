@@ -19,5 +19,10 @@ namespace ChapooApplication.Model
         {
 
         }
+
+        public Order(int OrderId)
+        {
+            this.OrderId = OrderId;
+        }
     }
 }

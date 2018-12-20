@@ -12,6 +12,10 @@ namespace ChapooApplication.UI
 {
     public partial class WaiterMenu : Form
     {
+        private int TableView;
+        //private string TableView;
+
+
         public WaiterMenu()
         {
             InitializeComponent();
@@ -26,8 +30,9 @@ namespace ChapooApplication.UI
 
         private void button_NewOrder_Click(object sender, EventArgs e)
         {
+            TableView = 1;
             this.Hide();
-            Tables tables = new Tables();
+            Tables tables = new Tables(TableView);
             tables.FormClosed += new FormClosedEventHandler(back_FormClosed);
             tables.Show();
         }
@@ -49,8 +54,9 @@ namespace ChapooApplication.UI
 
         private void button_tables_Click(object sender, EventArgs e)
         {
+            TableView = 0;
             this.Hide();
-            Tables tables = new Tables();
+            Tables tables = new Tables(TableView);
             tables.FormClosed += new FormClosedEventHandler(back_FormClosed);
             tables.Show();
         }

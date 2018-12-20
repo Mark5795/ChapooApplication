@@ -42,5 +42,10 @@ namespace ChapooApplication.Logica
 
             tableDAL.ChangeTableStatus(status, table);
         }
+
+        public int GetTableId(Table table)
+        {
+            return tableDAL.GetTableId(table);
+        }
     }
 }

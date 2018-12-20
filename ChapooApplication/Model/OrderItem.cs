@@ -20,5 +20,14 @@ namespace ChapooApplication.Model
         {
 
         }
+
+        public OrderItem(Order Order, MenuItem MenuItem, int Count, Table Table, string Comment)
+        {
+            this.Order = Order;
+            this.MenuItem = MenuItem;
+            this.Count = Count;
+            this.Table = Table;
+            this.Comment = Comment;
+        }
     }
 }

@@ -17,5 +17,13 @@ namespace ChapooApplication.Model
         {
 
         }
+
+        public MenuItem(int ItemId, string Name, float Price, int Count)
+        {
+            this.ItemId = ItemId;
+            this.Name = Name;
+            this.Price = Price;
+            this.Count = Count;
+        }
     }
 }

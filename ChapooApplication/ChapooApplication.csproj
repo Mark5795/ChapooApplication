@@ -49,10 +49,16 @@
   <ItemGroup>
     <Compile Include="DAL\DBconnection.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
+    <Compile Include="DAL\ItemDAL.cs" />
+    <Compile Include="DAL\OverviewDAL.cs" />
     <Compile Include="DAL\TableDAL.cs" />
     <Compile Include="Logica\LoginService.cs" />
+    <Compile Include="Logica\MenuItemService.cs" />
+    <Compile Include="Logica\OrderItemService.cs" />
+    <Compile Include="Logica\OrderService.cs" />
     <Compile Include="Logica\OverviewService.cs" />
     <Compile Include="Logica\TableService.cs" />
+    <Compile Include="Model\Drinks.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Function.cs" />
     <Compile Include="Model\MenuItem.cs" />
@@ -61,6 +67,35 @@
     <Compile Include="Model\OrderStatus.cs" />
     <Compile Include="Model\Table.cs" />
     <Compile Include="Model\TableStatus.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\DrinksChoosen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\DrinksChoosen.Designer.cs">
+      <DependentUpon>DrinksChoosen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\DrinksKind.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\DrinksKind.Designer.cs">
+      <DependentUpon>DrinksKind.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FoodsKind.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FoodsKind.Designer.cs">
+      <DependentUpon>FoodsKind.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\NewOrderMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\NewOrderMenu.Designer.cs">
+      <DependentUpon>NewOrderMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Overview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,10 +133,18 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
+    <EmbeddedResource Include="UI\DrinksChoosen.resx">
+      <DependentUpon>DrinksChoosen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\DrinksKind.resx">
+      <DependentUpon>DrinksKind.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FoodsKind.resx">
+      <DependentUpon>FoodsKind.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NewOrderMenu.resx">
+      <DependentUpon>NewOrderMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Overview.resx">
       <DependentUpon>Overview.cs</DependentUpon>
     </EmbeddedResource>

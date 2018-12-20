@@ -15,6 +15,7 @@ namespace ChapooApplication.UI
     public partial class Overview : Form
     {
         private Function function;
+        OverviewService overviewService = new OverviewService();
 
         public Overview(Function function, Employee employee)
         {
@@ -35,22 +36,17 @@ namespace ChapooApplication.UI
 
         private void GetOrders(Function function)
         {
-            OverviewService overviewService = new OverviewService();
+            List<OrderItem> OrderItemList = overviewService.OrderItemList(function);
 
-            List<OrderItem> OrderItemList = overviewService.BestelItemLijst(functie);
-
-
-            //maak voor elk item een kolom
-            foreach (Model.OrderItem Item in OrderItemList)
+            foreach (OrderItem Item in OrderItemList)
             {
-                ListViewItem rij = new ListViewItem(Item.Bestelling.BestellingId.ToString());
-                rij.SubItems.Add(Item.Item.Naam);
-                rij.SubItems.Add(Item.Aantal.ToString());
-                rij.SubItems.Add(Item.Tafel.ToString());
-                rij.SubItems.Add(Item.Commentaar);
-                rij.Tag = Item;
-                lst_Overzicht.Items.Add(rij);
-
+                ListViewItem row = new ListViewItem(Item.Order.OrderId.ToString());
+                row.SubItems.Add(Item.MenuItem.Name);
+                row.SubItems.Add(Item.Count.ToString());
+                row.SubItems.Add(Item.Table.ToString());
+                row.SubItems.Add(Item.Comment);
+                row.Tag = Item;
+                listView_OrderOverview.Items.Add(row);
             }
         }
 

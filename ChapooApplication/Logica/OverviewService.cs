@@ -10,6 +10,13 @@ namespace ChapooApplication.Logica
 {
     class OverviewService
     {
+        IOverviewDAL overviewDAL = new OverviewDAL();
+
+        public List<OrderItem> OrderItemList(Function function)
+        {
+            List<OrderItem> orderItems = overviewDAL.GetOrderItemsForOverview(function);
+            return orderItems;
+        }
 
     }
 }

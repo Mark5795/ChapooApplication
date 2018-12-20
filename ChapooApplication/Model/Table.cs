@@ -16,5 +16,10 @@ namespace ChapooApplication.Model
             this.TableId = TableId;
             this.TableStatus = TableStatus;
         }
+
+        public Table(int TableId)
+        {
+            this.TableId = TableId;
+        }
     }
 }

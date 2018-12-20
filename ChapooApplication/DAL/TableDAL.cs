@@ -25,9 +25,9 @@ namespace ChapooApplication.DAL
             StringBuilder sb = new StringBuilder();
 
             sb.Append(query);
-            String sqlquery = sb.ToString();
+            String sqlquery = query.ToString();
 
-            SqlCommand command = new SqlCommand(query, sql);
+            SqlCommand command = new SqlCommand(sqlquery, sql);
             command.Prepare();
             SqlDataReader reader = command.ExecuteReader();
 
@@ -72,6 +72,40 @@ namespace ChapooApplication.DAL
             command.ExecuteNonQuery();
             sql.Close();
         }
+
+        public int GetTableId(Table table)
+        {
+            int TableId = table.TableId;
+            int tableId = 0;
+
+            DBconnection conn = new DBconnection();
+            SqlConnection sql = conn.Dbconnection();
+
+            sql.Open();
+
+            string query = "SELECT TableId FROM RestaurantTable WHERE TableId = @TableId";
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append(query);
+            String sqlquery = sb.ToString();
+
+            SqlParameter TableIdDB = new SqlParameter("@TableId", SqlDbType.Int, 3);
+            SqlCommand command = new SqlCommand(query, sql);
+            command.Prepare();
+            command.Parameters.Add(TableIdDB).Value = TableId;
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                tableId = reader.GetInt32(0);
+            }
+
+            reader.Close();
+            sql.Close();
+            return tableId;
+        }
     }
 
 
@@ -79,5 +113,6 @@ namespace ChapooApplication.DAL
     {
         List<Table> GetAllTables();
         void ChangeTableStatus(int status, Table table);
+        int GetTableId(Table table);
     }
 }

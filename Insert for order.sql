@@ -1,0 +1,1 @@
+﻿INSERT INTO [dbo].[Order] ([OrderId], [TableId], [OrderTime], [Date], [Paid], [PaymentMethod]) VALUES (1, 4, N'18:20:00', N'2017-04-05', 1, N'Card')

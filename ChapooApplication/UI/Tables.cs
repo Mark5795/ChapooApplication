@@ -14,8 +14,11 @@ namespace ChapooApplication.UI
 {
     public partial class Tables : Form
     {
-        public Tables()
+        private int WhichView;
+
+        public Tables(int view)
         {
+            WhichView = view;
             InitializeComponent();
             GetTables();
         }
@@ -43,11 +46,24 @@ namespace ChapooApplication.UI
                 tablebtn.Font = new Font(tablebtn.Font.FontFamily, 16);
                 tablebtn.Enabled = true;
 
-                tablebtn.Click += (s, e) =>
+                if (WhichView == 1)
                 {
-                    tableService.ChangeTableStatus(table);
-                    GetTables();
-                };
+                    tablebtn.Click += (s, e) =>
+                    {
+                        int TableId = tableService.GetTableId(table);
+                        this.Hide();
+                        NewOrderMenu newOrder = new NewOrderMenu(TableId);
+                        newOrder.Show();
+                    };
+                }
+                else
+                {
+                    tablebtn.Click += (s, e) =>
+                    {
+                        tableService.ChangeTableStatus(table);
+                        GetTables();
+                    };
+                }
 
                 tablebtn.Size = button_Table.Size;
 
@@ -76,7 +92,10 @@ namespace ChapooApplication.UI
 
         private void button_Back_Click(object sender, EventArgs e)
         {
-            this.Close();
+            WaiterMenu menu = new WaiterMenu();
+            menu.FormClosed += new FormClosedEventHandler(back_FormClosed);
+            menu.Show();
+            this.Hide();
         }
 
         private void button_Refresh_Click(object sender, EventArgs e)
