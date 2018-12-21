@@ -50,6 +50,9 @@
     <Compile Include="DAL\DBconnection.cs" />
     <Compile Include="DAL\EmployeeDAL.cs" />
     <Compile Include="DAL\ItemDAL.cs" />
+    <Compile Include="DAL\MenuDAL.cs" />
+    <Compile Include="DAL\OrderDAL.cs" />
+    <Compile Include="DAL\OrderItemDAL.cs" />
     <Compile Include="DAL\OverviewDAL.cs" />
     <Compile Include="DAL\TableDAL.cs" />
     <Compile Include="Logica\LoginService.cs" />
@@ -61,6 +64,7 @@
     <Compile Include="Model\Drinks.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Function.cs" />
+    <Compile Include="Model\Menu.cs" />
     <Compile Include="Model\MenuItem.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\OrderItem.cs" />
@@ -72,11 +76,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="UI\DrinksChoosen.cs">
+    <Compile Include="UI\ItemChoosen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\DrinksChoosen.Designer.cs">
-      <DependentUpon>DrinksChoosen.cs</DependentUpon>
+    <Compile Include="UI\ItemChoosen.Designer.cs">
+      <DependentUpon>ItemChoosen.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\DrinksKind.cs">
       <SubType>Form</SubType>
@@ -133,8 +137,8 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\DrinksChoosen.resx">
-      <DependentUpon>DrinksChoosen.cs</DependentUpon>
+    <EmbeddedResource Include="UI\ItemChoosen.resx">
+      <DependentUpon>ItemChoosen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\DrinksKind.resx">
       <DependentUpon>DrinksKind.cs</DependentUpon>

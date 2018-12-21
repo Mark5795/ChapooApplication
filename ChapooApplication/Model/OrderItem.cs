@@ -13,7 +13,7 @@ namespace ChapooApplication.Model
         public MenuItem MenuItem { get; set; }
         public Table Table { get; set; }
         public int Count { get; set; }
-        public bool OrderStatus { get; set; }
+        public OrderStatus OrderStatus { get; set; }
         public string Comment { get; set; }        
 
         public OrderItem()
@@ -27,6 +27,16 @@ namespace ChapooApplication.Model
             this.MenuItem = MenuItem;
             this.Count = Count;
             this.Table = Table;
+            this.Comment = Comment;
+        }
+
+        public OrderItem(int OrderItemId, Order Order, MenuItem MenuItem, int Count, OrderStatus OrderStatus, string Comment)
+        {
+            this.OrderItemId = OrderItemId;
+            this.Order = Order;
+            this.MenuItem = MenuItem;
+            this.Count = Count;
+            this.OrderStatus = OrderStatus;
             this.Comment = Comment;
         }
     }

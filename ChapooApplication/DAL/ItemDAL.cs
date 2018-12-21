@@ -50,10 +50,48 @@ namespace ChapooApplication.DAL
 
             return menuItem;
         }
+
+        public MenuItem ItemGetById(int Id)
+        {
+            DBconnection conn = new DBconnection();
+            SqlConnection sql = conn.Dbconnection();
+            MenuItem menuitem = null;
+
+            sql.Open();
+
+            StringBuilder sb = new StringBuilder();
+
+            string query = "SELECT ItemId, Name, Price, Count FROM MenuItem WHERE ItemId = @ItemId";
+            sb.Append(query);
+
+            String sqlquery = sb.ToString();
+
+            SqlParameter ItemID = new SqlParameter("@ItemID", SqlDbType.Int, 3);
+
+            SqlCommand command = new SqlCommand(sqlquery, sql);
+            command.Parameters.Add(ItemID).Value = Id;
+            command.Prepare();
+
+            SqlDataReader reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                string name = reader.GetString(1);
+                float price = (float)reader.GetDouble(2);
+                int count = reader.GetInt32(3);
+
+                menuitem = new MenuItem(Id, name, price, count);
+            }
+
+            reader.Close();
+            sql.Close();
+
+            return menuitem;
+        }
     }
 
     public interface IItemDAL
     {
         MenuItem ItemGetByName(string Name);
+        MenuItem ItemGetById(int Id);
     }
 }

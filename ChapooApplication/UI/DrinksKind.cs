@@ -33,6 +33,9 @@ namespace ChapooApplication.UI
         public DrinksKind(List<OrderItem> ChoosenItems, Order order)
         {
             InitializeComponent();
+            DrinkButtons();
+            this.choosenItems = ChoosenItems;
+            this.order = order;
         }
 
         private void DrinkButtons()
@@ -41,37 +44,37 @@ namespace ChapooApplication.UI
             foreach (RowStyle style in Rowstyles)
             {
                 style.SizeType = SizeType.Absolute;
-                style.Height = btn_Soda.Height;
+                style.Height = button_DrinksKind.Height;
             }
 
-            btn_Soda.Text = "Soda";
-            btn_Soda.Name = "btn_Soda";
-            tableLayoutPanel1.Controls.Add(btn_Soda);
+            button_DrinksKind.Text = "Soda";
+            button_DrinksKind.Name = "btn_Soda";
+            tableLayoutPanel1.Controls.Add(button_DrinksKind);
 
-            btn_Wine.Size = btn_Soda.Size;
+            btn_Wine.Size = button_DrinksKind.Size;
             btn_Wine.Text = "Wine";
             btn_Wine.Click += new EventHandler(btn_Wine_Click);
             tableLayoutPanel1.Controls.Add(btn_Wine);
 
-            btn_Beer.Size = btn_Soda.Size;
+            btn_Beer.Size = button_DrinksKind.Size;
             btn_Beer.Text = "Beer";
             btn_Beer.Click += new EventHandler(btn_Beer_Click);
             tableLayoutPanel1.Controls.Add(btn_Beer);
 
-            btn_Distilled.Size = btn_Soda.Size;
+            btn_Distilled.Size = button_DrinksKind.Size;
             btn_Distilled.Text = "Distilled";
             btn_Distilled.Click += new EventHandler(btn_Distilled_Click);
             tableLayoutPanel1.Controls.Add(btn_Distilled);
 
-            btn_WarmeDrank.Size = btn_Soda.Size;
+            btn_WarmeDrank.Size = button_DrinksKind.Size;
             btn_WarmeDrank.Text = "Hot";
             btn_WarmeDrank.Click += new EventHandler(btn_WarmeDrank_Click);
             tableLayoutPanel1.Controls.Add(btn_WarmeDrank);
         }
 
-        private void btn_Soda_Click(object sender, EventArgs e)
+        private void button_DrinksKind_Click(object sender, EventArgs e)
         {
-            DrinksChoosen form = new DrinksChoosen((int)Drinks.Soda, ChoosenItems, order);
+            ItemChoosen form = new ItemChoosen((int)Drinks.Soda, choosenItems, order);
             form.FormClosed += new FormClosedEventHandler(DrinksKind_FormClosed);
             form.Show();
             this.Hide();
@@ -79,7 +82,7 @@ namespace ChapooApplication.UI
 
         private void btn_Beer_Click(object sender, EventArgs e)
         {
-            DrinksChoosen form = new DrinksChoosen((int)Drinks.Beer, ChoosenItems, order);
+            ItemChoosen form = new ItemChoosen((int)Drinks.Beer, choosenItems, order);
             form.FormClosed += new FormClosedEventHandler(DrinksKind_FormClosed);
             form.Show();
             this.Hide();
@@ -87,7 +90,7 @@ namespace ChapooApplication.UI
 
         private void btn_Wine_Click(object sender, EventArgs e)
         {
-            DrinksChoosen form = new DrinksChoosen((int)Drinks.Wine, ChoosenItems, order);
+            ItemChoosen form = new ItemChoosen((int)Drinks.Wine, choosenItems, order);
             form.FormClosed += new FormClosedEventHandler(DrinksKind_FormClosed);
             form.Show();
             this.Hide();
@@ -95,7 +98,7 @@ namespace ChapooApplication.UI
 
         private void btn_Distilled_Click(object sender, EventArgs e)
         {
-            DrinksChoosen form = new DrinksChoosen((int)Drinks.Distilled, ChoosenItems, order);
+            ItemChoosen form = new ItemChoosen((int)Drinks.Distilled, choosenItems, order);
             form.FormClosed += new FormClosedEventHandler(DrinksKind_FormClosed);
             form.Show();
             this.Hide();
@@ -103,7 +106,7 @@ namespace ChapooApplication.UI
 
         private void btn_WarmeDrank_Click(object sender, EventArgs e)
         {
-            DrinksChoosen form = new DrinksChoosen((int)Drinks.Hot, ChoosenItems, order);
+            ItemChoosen form = new ItemChoosen((int)Drinks.Hot, choosenItems, order);
             form.FormClosed += new FormClosedEventHandler(DrinksKind_FormClosed);
             form.Show();
             this.Hide();
@@ -114,15 +117,10 @@ namespace ChapooApplication.UI
             this.Close();
         }
 
-        private void button_DrinksKind_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         void DrinksKind_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Drinks form = (Drinks)sender;
-            //ChoosenItems = form.ChoosenItems;
+            ItemChoosen form = (ItemChoosen)sender;
+            choosenItems = form.ChoosenItems;
             this.Show();
         }
     }

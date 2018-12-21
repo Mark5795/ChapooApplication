@@ -56,19 +56,19 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(65, 55);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(187, 126);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.12844F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.87156F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 169F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(187, 379);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // button_DrinksKind
             // 
             this.button_DrinksKind.Location = new System.Drawing.Point(3, 3);
             this.button_DrinksKind.Name = "button_DrinksKind";
-            this.button_DrinksKind.Size = new System.Drawing.Size(181, 27);
+            this.button_DrinksKind.Size = new System.Drawing.Size(181, 50);
             this.button_DrinksKind.TabIndex = 0;
             this.button_DrinksKind.UseVisualStyleBackColor = true;
             this.button_DrinksKind.Click += new System.EventHandler(this.button_DrinksKind_Click);
