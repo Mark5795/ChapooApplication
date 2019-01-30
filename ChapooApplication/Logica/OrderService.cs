@@ -24,7 +24,7 @@ namespace ChapooApplication.Logica
                     return orderItems;
                 }
             }
-            OrderItem orderItem = new OrderItem(0, order, menuItem, 1, orderStatus, Comment);
+            OrderItem orderItem = new OrderItem(0, order, menuItem, 1, order.Table, orderStatus, Comment);
             orderItems.Add(orderItem);
 
             return orderItems;

@@ -13,11 +13,21 @@ namespace ChapooApplication.Model
         public TimeSpan OrderTime { get; set; }
         public DateTime Date { get; set; }
         public bool Paid { get; set; }
-        public string PaymentMethod { get; set; }
+        public int PaymentMethod { get; set; }
 
         public Order()
         {
 
+        }
+
+        public Order(int OrderId, Table Table, TimeSpan OrderTime, DateTime Date, bool Paid, int PaymentMethod)
+        {
+            this.OrderId = OrderId;
+            this.Table = Table;
+            this.OrderTime = OrderTime;
+            this.Date = Date;
+            this.Paid = Paid;
+            this.PaymentMethod = PaymentMethod;
         }
 
         public Order(int OrderId)

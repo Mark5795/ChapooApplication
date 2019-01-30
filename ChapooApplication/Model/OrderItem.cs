@@ -30,12 +30,13 @@ namespace ChapooApplication.Model
             this.Comment = Comment;
         }
 
-        public OrderItem(int OrderItemId, Order Order, MenuItem MenuItem, int Count, OrderStatus OrderStatus, string Comment)
+        public OrderItem(int OrderItemId, Order Order, MenuItem MenuItem, int Count, Table Table, OrderStatus OrderStatus, string Comment)
         {
             this.OrderItemId = OrderItemId;
             this.Order = Order;
             this.MenuItem = MenuItem;
             this.Count = Count;
+            this.Table = Table;
             this.OrderStatus = OrderStatus;
             this.Comment = Comment;
         }

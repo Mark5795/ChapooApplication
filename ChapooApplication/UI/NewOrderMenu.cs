@@ -1,4 +1,5 @@
-﻿using ChapooApplication.Model;
+﻿using ChapooApplication.Logica;
+using ChapooApplication.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,18 +16,32 @@ namespace ChapooApplication.UI
     {
         public List<OrderItem> ChoosenItems = new List<OrderItem>();
         protected Order order;
-        int TableNr;
+        protected Table ChoosenTable;
+        //private int TableNr;
 
         public NewOrderMenu(int TableId)
         {
-            TableNr = TableId;
+            //TableNr = TableId;
+            ChoosenTable = new Table(TableId, 3);
             InitializeComponent();
             ChangeLabelText();
+
+            //de laaste nu moet nog verandert worden zodat er gekozen wordt met wat er betaald wordt dmv buttons!!!
+            order = new Order(0, ChoosenTable, TimeSpan.FromTicks(DateTime.Now.Ticks), DateTime.Now, false, 0);
+            ListView lv = listView_OrderItems;
+            {
+                lv.View = View.Details;
+                lv.Columns.Add("Id", -2, HorizontalAlignment.Left);
+                lv.Columns.Add("Naam", -2, HorizontalAlignment.Left);
+                lv.Columns.Add("Aantal", -2, HorizontalAlignment.Left);
+            }
+
+            additems(ChoosenItems);
         }
 
         private void ChangeLabelText()
         {
-            label_TableId.Text = TableNr.ToString();
+            label_TableId.Text = ChoosenTable.TableId.ToString();
         }
 
         private void button_back_Click(object sender, EventArgs e)
@@ -88,11 +103,19 @@ namespace ChapooApplication.UI
 
         private void button_Drinks_Click(object sender, EventArgs e)
         {
-            //gekozenTafel = (Tafel)cmb_Tafelnummer.SelectedItem;
+            //ChoosenTable = new Table(TableNr);
             DrinksKind form = new DrinksKind(ChoosenItems, order);
             form.FormClosed += new FormClosedEventHandler(NewOrder_FormClosed);
             this.Hide();
             form.Show();
+        }
+
+        private void button_send_Click(object sender, EventArgs e)
+        {
+            OrderService orderService = new OrderService();
+            orderService.AddOrder(ChoosenItems);
+            ChoosenItems.RemoveRange(0, ChoosenItems.Count);
+            additems(ChoosenItems);
         }
     }
 }

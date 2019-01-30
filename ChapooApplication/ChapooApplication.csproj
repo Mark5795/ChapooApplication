@@ -69,6 +69,7 @@
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\OrderItem.cs" />
     <Compile Include="Model\OrderStatus.cs" />
+    <Compile Include="Model\PaymentMethod.cs" />
     <Compile Include="Model\Table.cs" />
     <Compile Include="Model\TableStatus.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

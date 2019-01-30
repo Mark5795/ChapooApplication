@@ -20,27 +20,27 @@ namespace ChapooApplication.DAL
 
             StringBuilder sb = new StringBuilder();
 
-            string query = "INSERT INTO OrderItem (MenuItemId, Aantal, Bestelling, Status, Commentaar, Afgeleverd) Values (@MenuItem, @aantal, @bestelling, @Status, @Commentaar, @afgeleverd);";
+            string query = "INSERT INTO OrderItem (OrderId, MenuItemId, TableId, Count, OrderStatus, Comment) Values (@OrderId, @MenuItemId, @TableId, @Count, @OrderStatus, @Comment);";
 
             sb.Append(query);
 
             String sqlquery = sb.ToString();
 
-            SqlParameter MenuItem = new SqlParameter("@MenuItem", SqlDbType.Int, 3);
-            SqlParameter Aantal = new SqlParameter("@Aantal", SqlDbType.Int, 5);
-            SqlParameter Bestelling = new SqlParameter("@bestelling", SqlDbType.Int);
-            SqlParameter Status = new SqlParameter("@Status", SqlDbType.Bit, 1);
-            SqlParameter Commentaar = new SqlParameter("@Commentaar", SqlDbType.NVarChar, 500);
-            SqlParameter afgeleverd = new SqlParameter("@afgeleverd", SqlDbType.Bit);
+            SqlParameter OrderId = new SqlParameter("@OrderId", SqlDbType.Int, 3);
+            SqlParameter MenuItemId = new SqlParameter("@MenuItemId", SqlDbType.Int, 5);
+            SqlParameter TableId = new SqlParameter("@TableId", SqlDbType.Int);
+            SqlParameter Count = new SqlParameter("@Count", SqlDbType.Bit, 1);
+            SqlParameter OrderStatus = new SqlParameter("@OrderStatus", SqlDbType.NVarChar, 500);
+            SqlParameter Comment = new SqlParameter("@Comment", SqlDbType.Bit);
 
             SqlCommand command = new SqlCommand(sqlquery, sql);
 
-            command.Parameters.Add(MenuItem).Value = orderItem.Item.ItemId;
-            command.Parameters.Add(Aantal).Value = orderItem.Count;
-            command.Parameters.Add(Bestelling).Value = orderItem.Bestelling.BestellingId;
-            command.Parameters.Add(Status).Value = orderItem.OrderStatus;
-            command.Parameters.Add(Commentaar).Value = orderItem.Commentaar;
-            command.Parameters.Add(afgeleverd).Value = orderItem.Afgeleverd;
+            command.Parameters.Add(OrderId).Value = orderItem.Order.OrderId;
+            command.Parameters.Add(MenuItemId).Value = orderItem.MenuItem.ItemId;
+            command.Parameters.Add(TableId).Value = orderItem.Table.TableId;
+            command.Parameters.Add(Count).Value = orderItem.Count;
+            command.Parameters.Add(OrderStatus).Value = orderItem.OrderStatus;
+            command.Parameters.Add(Comment).Value = orderItem.Comment;
 
             command.ExecuteNonQuery();
             sql.Close();
@@ -49,6 +49,6 @@ namespace ChapooApplication.DAL
 
     public interface IOrderItemDAL
     {
-
+        void AddOrderItem(OrderItem orderItem);
     }
 }

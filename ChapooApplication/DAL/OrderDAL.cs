@@ -21,37 +21,36 @@ namespace ChapooApplication.DAL
 
             StringBuilder sb = new StringBuilder();
 
-            string query = "INSERT INTO Order (TableId, OrderTime, Date, Paid) VALUES (@TableId, @OrderTime, @Date, @Paid)";
+            string query = "INSERT INTO [Order] (TableId, OrderTime, Date, Paid, PaymentMethod) VALUES (@TableId, @OrderTime, @Date, @Paid, @PaymentMethod); ";
 
             sb.Append(query);
 
             String sqlquery = sb.ToString();
 
-            SqlParameter TableId = new SqlParameter("@TableId", SqlDbType.Int, 4);
+            SqlParameter TableId = new SqlParameter("@TableId", SqlDbType.Int);
             SqlParameter OrderTime = new SqlParameter("@OrderTime", SqlDbType.Time, 5);
             SqlParameter Date = new SqlParameter("@Date", SqlDbType.Date, 3);
-            SqlParameter Paid = new SqlParameter("@Paid", SqlDbType.Bit, 1);
+            SqlParameter Paid = new SqlParameter("@Paid", SqlDbType.Bit);
+            SqlParameter PaymentMethod = new SqlParameter("@PaymentMethod", SqlDbType.Int);
 
 
             SqlCommand command = new SqlCommand(sqlquery, sql);
 
-
-            command.Parameters.Add(TableId).Value = order.Table.TableId;
-
             DateTime now = DateTime.Now;
-
+            command.Parameters.Add(TableId).Value = order.Table.TableId;      
             command.Parameters.Add(OrderTime).Value = now.Hour + ":" + now.Minute + ":" + now.Second;
             command.Parameters.Add(Date).Value = now.Date;
-            command.Parameters.Add(Paid).Value = 0;
+            command.Parameters.Add(Paid).Value = order.Paid;
+            command.Parameters.Add(PaymentMethod).Value = order.PaymentMethod;
 
             command.ExecuteNonQuery();
 
-            query = "SELECT MAX(BestellingID) FROM Bestelling";
 
-            sb.Append(query);
-            sqlquery = sb.ToString();
-
-            command = new SqlCommand(sqlquery, sql);
+            query = "SELECT MAX(OrderId) FROM [Order]";
+            //sb.Append(query);
+            //sqlquery = sb.ToString();
+            //command = new SqlCommand(sqlquery, sql);
+            command = new SqlCommand(query, sql);
 
             return (int)command.ExecuteScalar();
         }

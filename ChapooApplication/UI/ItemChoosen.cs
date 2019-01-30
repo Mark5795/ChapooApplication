@@ -85,7 +85,7 @@ namespace ChapooApplication.UI
 
         private void button_Add_Click(object sender, EventArgs e)
         {
-            choosenItems = orderService.AddOrder(choosenItems, ChoosenItem, richTextBox_Comment.Text, order);
+            choosenItems = orderService.CreateOrder(choosenItems, ChoosenItem, richTextBox_Comment.Text, order);
             this.Close();
         }
     }

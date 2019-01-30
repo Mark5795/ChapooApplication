@@ -58,6 +58,7 @@
             this.button_send.TabIndex = 1;
             this.button_send.Text = "Send";
             this.button_send.UseVisualStyleBackColor = true;
+            this.button_send.Click += new System.EventHandler(this.button_send_Click);
             // 
             // button_Drinks
             // 
@@ -132,7 +133,7 @@
             this.listView_OrderItems.TabIndex = 9;
             this.listView_OrderItems.UseCompatibleStateImageBehavior = false;
             // 
-            // NewOrder
+            // NewOrderMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -147,7 +148,7 @@
             this.Controls.Add(this.button_Drinks);
             this.Controls.Add(this.button_send);
             this.Controls.Add(this.button_back);
-            this.Name = "NewOrder";
+            this.Name = "NewOrderMenu";
             this.Text = "NewOrder";
             this.Load += new System.EventHandler(this.NewOrder_Load);
             this.ResumeLayout(false);
