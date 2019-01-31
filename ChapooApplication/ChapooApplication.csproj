@@ -63,6 +63,7 @@
     <Compile Include="Logica\TableService.cs" />
     <Compile Include="Model\Drinks.cs" />
     <Compile Include="Model\Employee.cs" />
+    <Compile Include="Model\FoodCategories.cs" />
     <Compile Include="Model\Function.cs" />
     <Compile Include="Model\Menu.cs" />
     <Compile Include="Model\MenuItem.cs" />

@@ -34,7 +34,7 @@
             this.button_Food = new System.Windows.Forms.Button();
             this.button_plus = new System.Windows.Forms.Button();
             this.button_min = new System.Windows.Forms.Button();
-            this.button_multiply = new System.Windows.Forms.Button();
+            this.button_delete = new System.Windows.Forms.Button();
             this.label_tablenrText = new System.Windows.Forms.Label();
             this.label_TableId = new System.Windows.Forms.Label();
             this.listView_OrderItems = new System.Windows.Forms.ListView();
@@ -78,33 +78,40 @@
             this.button_Food.TabIndex = 3;
             this.button_Food.Text = "Food";
             this.button_Food.UseVisualStyleBackColor = true;
+            this.button_Food.Click += new System.EventHandler(this.button_Food_Click);
             // 
             // button_plus
             // 
+            this.button_plus.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_plus.Location = new System.Drawing.Point(0, 135);
             this.button_plus.Name = "button_plus";
             this.button_plus.Size = new System.Drawing.Size(108, 49);
             this.button_plus.TabIndex = 4;
             this.button_plus.Text = "+";
             this.button_plus.UseVisualStyleBackColor = true;
+            this.button_plus.Click += new System.EventHandler(this.button_plus_Click);
             // 
             // button_min
             // 
+            this.button_min.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_min.Location = new System.Drawing.Point(108, 135);
             this.button_min.Name = "button_min";
             this.button_min.Size = new System.Drawing.Size(108, 49);
             this.button_min.TabIndex = 5;
             this.button_min.Text = "-";
             this.button_min.UseVisualStyleBackColor = true;
+            this.button_min.Click += new System.EventHandler(this.button_min_Click);
             // 
-            // button_multiply
+            // button_delete
             // 
-            this.button_multiply.Location = new System.Drawing.Point(216, 135);
-            this.button_multiply.Name = "button_multiply";
-            this.button_multiply.Size = new System.Drawing.Size(108, 49);
-            this.button_multiply.TabIndex = 6;
-            this.button_multiply.Text = "x";
-            this.button_multiply.UseVisualStyleBackColor = true;
+            this.button_delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_delete.Location = new System.Drawing.Point(216, 135);
+            this.button_delete.Name = "button_delete";
+            this.button_delete.Size = new System.Drawing.Size(108, 49);
+            this.button_delete.TabIndex = 6;
+            this.button_delete.Text = "x";
+            this.button_delete.UseVisualStyleBackColor = true;
+            this.button_delete.Click += new System.EventHandler(this.button_delete_Click);
             // 
             // label_tablenrText
             // 
@@ -141,7 +148,7 @@
             this.Controls.Add(this.listView_OrderItems);
             this.Controls.Add(this.label_TableId);
             this.Controls.Add(this.label_tablenrText);
-            this.Controls.Add(this.button_multiply);
+            this.Controls.Add(this.button_delete);
             this.Controls.Add(this.button_min);
             this.Controls.Add(this.button_plus);
             this.Controls.Add(this.button_Food);
@@ -164,7 +171,7 @@
         private System.Windows.Forms.Button button_Food;
         private System.Windows.Forms.Button button_plus;
         private System.Windows.Forms.Button button_min;
-        private System.Windows.Forms.Button button_multiply;
+        private System.Windows.Forms.Button button_delete;
         private System.Windows.Forms.Label label_tablenrText;
         private System.Windows.Forms.Label label_TableId;
         private System.Windows.Forms.ListView listView_OrderItems;

@@ -32,12 +32,18 @@ namespace ChapooApplication.Logica
 
         public void AddOrder(List<OrderItem> orderItems)
         {
-
-            int OrderId = orderDAL.AddOrder(orderItems[0].Order);
-            foreach (OrderItem item in orderItems)
+            try
             {
-                item.Order.OrderId = OrderId;
-                orderItemDAL.AddOrderItem(item);
+                int OrderId = orderDAL.AddOrder(orderItems[0].Order);
+                foreach (OrderItem item in orderItems)
+                {
+                    item.Order.OrderId = OrderId;
+                    orderItemDAL.AddOrderItem(item);
+                }
+            }
+            catch (Exception)
+            {
+
             }
         }
     }

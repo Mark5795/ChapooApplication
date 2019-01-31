@@ -21,12 +21,19 @@ namespace ChapooApplication.UI
         private OrderService orderService = new OrderService();
         private Model.MenuItem ChoosenItem;
 
-        public ItemChoosen(int DrinksKind, List<OrderItem> ChoosenItems, Order order)
+        public ItemChoosen(int ItemsKind, List<OrderItem> choosenItems, Order order)
         {
             InitializeComponent();
-            this.choosenItems = ChoosenItems;
+            this.choosenItems = choosenItems;
             this.order = order;
-            items = menuItemService.FilterDrinks(DrinksKind);
+            if (ItemsKind >= 7)
+            {
+                items = menuItemService.FilterDrinks(ItemsKind);
+            }
+            else
+            {
+                items = menuItemService.FilterFoods(ItemsKind);
+            }
             AddButtons(items);
         }
 
@@ -80,13 +87,16 @@ namespace ChapooApplication.UI
 
         private void button_Back_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void button_Add_Click(object sender, EventArgs e)
         {
-            choosenItems = orderService.CreateOrder(choosenItems, ChoosenItem, richTextBox_Comment.Text, order);
-            this.Close();
+            if (ChoosenItem != null)
+            {
+                choosenItems = orderService.CreateOrder(choosenItems, ChoosenItem, richTextBox_Comment.Text, order);
+                this.Close();
+            }
         }
     }
 }

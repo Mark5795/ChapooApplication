@@ -1,5 +1,6 @@
 ﻿using ChapooApplication.Logica;
 using ChapooApplication.Model;
+using ChapooApplication.UI.NewOrder;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,11 +18,9 @@ namespace ChapooApplication.UI
         public List<OrderItem> ChoosenItems = new List<OrderItem>();
         protected Order order;
         protected Table ChoosenTable;
-        //private int TableNr;
 
         public NewOrderMenu(int TableId)
         {
-            //TableNr = TableId;
             ChoosenTable = new Table(TableId, 3);
             InitializeComponent();
             ChangeLabelText();
@@ -88,10 +87,10 @@ namespace ChapooApplication.UI
             {
                 NewOrder_FormClosed((DrinksKind)sender);
             }
-            //else if (sender.GetType() == typeof(FoodsKind))
-            //{
-            //    NewOrder_FormClosed((FoodsKind)sender);
-            //}
+            else if (sender.GetType() == typeof(FoodsKind))
+            {
+                NewOrder_FormClosed((FoodsKind)sender);
+            }
         }
 
         void NewOrder_FormClosed(DrinksKind sender)
@@ -101,10 +100,24 @@ namespace ChapooApplication.UI
             this.Show();
         }
 
+        void NewOrder_FormClosed(FoodsKind sender)
+        {
+            ChoosenItems = sender.ChoosenItems;
+            this.additems(ChoosenItems);
+            this.Show();
+        }
+
         private void button_Drinks_Click(object sender, EventArgs e)
         {
-            //ChoosenTable = new Table(TableNr);
             DrinksKind form = new DrinksKind(ChoosenItems, order);
+            form.FormClosed += new FormClosedEventHandler(NewOrder_FormClosed);
+            this.Hide();
+            form.Show();
+        }
+
+        private void button_Food_Click(object sender, EventArgs e)
+        {
+            FoodsKind form = new FoodsKind(ChoosenItems, order);
             form.FormClosed += new FormClosedEventHandler(NewOrder_FormClosed);
             this.Hide();
             form.Show();
@@ -116,6 +129,49 @@ namespace ChapooApplication.UI
             orderService.AddOrder(ChoosenItems);
             ChoosenItems.RemoveRange(0, ChoosenItems.Count);
             additems(ChoosenItems);
+        }
+
+
+        private void button_plus_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int index = listView_OrderItems.SelectedIndices[0];
+                ChoosenItems[index].Count++;
+                additems(ChoosenItems);
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void button_min_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int index = listView_OrderItems.SelectedIndices[0];
+                ChoosenItems[index].Count--;
+                additems(ChoosenItems);
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void button_delete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int index = listView_OrderItems.SelectedIndices[0];
+                ChoosenItems.RemoveAt(index);
+                additems(ChoosenItems);
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }
