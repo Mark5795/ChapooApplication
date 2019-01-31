@@ -29,9 +29,9 @@ namespace ChapooApplication.DAL
             SqlParameter OrderId = new SqlParameter("@OrderId", SqlDbType.Int, 3);
             SqlParameter MenuItemId = new SqlParameter("@MenuItemId", SqlDbType.Int, 5);
             SqlParameter TableId = new SqlParameter("@TableId", SqlDbType.Int);
-            SqlParameter Count = new SqlParameter("@Count", SqlDbType.Bit, 1);
-            SqlParameter OrderStatus = new SqlParameter("@OrderStatus", SqlDbType.NVarChar, 500);
-            SqlParameter Comment = new SqlParameter("@Comment", SqlDbType.Bit);
+            SqlParameter Count = new SqlParameter("@Count", SqlDbType.Int, 1);
+            SqlParameter OrderStatus = new SqlParameter("@OrderStatus", SqlDbType.Int);
+            SqlParameter Comment = new SqlParameter("@Comment", SqlDbType.NVarChar, 500);
 
             SqlCommand command = new SqlCommand(sqlquery, sql);
 
