@@ -74,13 +74,13 @@ namespace ChapooApplication
                         MessageBox.Show("Wrong ID");
                     }
                 }
-            }
+        }
             catch (Exception error)
             {
 
                 MessageBox.Show(error.ToString());
             }
-        }
+}
 
         void login_FormClosed(object sender, FormClosedEventArgs e)
         {

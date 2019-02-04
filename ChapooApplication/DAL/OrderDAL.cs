@@ -21,7 +21,7 @@ namespace ChapooApplication.DAL
 
             StringBuilder sb = new StringBuilder();
 
-            string query = "INSERT INTO [Order] (TableId, OrderTime, Date, Paid, PaymentMethod) VALUES (@TableId, @OrderTime, @Date, @Paid, @PaymentMethod); ";
+            string query = "INSERT INTO OrderMenu (TableId, OrderTime, Date, Paid, PaymentMethod) VALUES (@TableId, @OrderTime, @Date, @Paid, @PaymentMethod); ";
 
             sb.Append(query);
 
@@ -46,7 +46,7 @@ namespace ChapooApplication.DAL
             command.ExecuteNonQuery();
 
 
-            query = "SELECT MAX(OrderId) FROM [Order]";
+            query = "SELECT MAX(OrderMenuId) FROM OrderMenu";
             //sb.Append(query);
             //sqlquery = sb.ToString();
             //command = new SqlCommand(sqlquery, sql);

@@ -26,11 +26,15 @@ namespace ChapooApplication.DAL
 
             if (function == Function.Barkeeper)
             {
-                query = "SELECT Order.OrderId, MenuItem.Name, OrderItem.Count, Order.TableId, OrderItem.Comment FROM OrderItem INNER JOIN Order on OrderItem.Order = Order.OrderId INNER JOIN MenuItem on OrderItem.MenuItemId = MenuItem.ItemId WHERE OrderItem.MenuItem > 21 AND OrderItem.OrderStatus != 3 ORDER BY Order.TableId ";
+                query = "SELECT OrderMenu.OrderMenuId, MenuItem.Name, OrderItem.Count, OrderMenu.TableId, OrderItem.Comment" +
+                    " FROM OrderItem INNER JOIN OrderMenu on OrderItem.OrderMenuId = OrderMenu.OrderMenuId INNER JOIN MenuItem ON OrderItem.MenuItemId = MenuItem.ItemId" +
+                    " WHERE OrderItem.MenuItemId > 21" +
+                    " AND OrderItem.OrderStatus != 3 ORDER" +
+                    " BY OrderMenu.TableId; ";
             }
             else
             {
-                query = "SELECT Order.OrderId, MenuItem.Name, OrderItem.Count, Order.TableId, OrderItem.Comment FROM OrderItem INNER JOIN Order on OrderItem.Order = Order.OrderId INNER JOIN MenuItem on OrderItem.MenuItemId = MenuItem.ItemId WHERE OrderItem.MenuItem < 21 AND OrderItem.OrderStatus != 3 ORDER BY Order.TableId ";
+                query = "SELECT OrderMenu.OrderMenuId, MenuItem.Name, OrderItem.Count, OrderMenu.TableId, OrderItem.Comment FROM OrderItem INNER JOIN OrderMenu on OrderItem.OrderMenuId = OrderMenu.OrderMenuId INNER JOIN MenuItem on OrderItem.MenuItemId = MenuItem.ItemId WHERE OrderItem.MenuItemId < 21 AND OrderItem.OrderStatus != 3 ORDER BY OrderMenu.TableId; ";
             }
 
             sb.Append(query);
@@ -43,8 +47,8 @@ namespace ChapooApplication.DAL
 
             while (reader.Read())
             {
-                int OrderId = reader.GetInt32(0);
-                Order order = new Order(OrderId);
+                int OrderMenuId = reader.GetInt32(0);
+                Order order = new Order(OrderMenuId);
                 string MenuItemName = reader.GetString(1);
                 MenuItem MenuItem = itemDAL.ItemGetByName(MenuItemName);
                 int Count = reader.GetInt32(2);

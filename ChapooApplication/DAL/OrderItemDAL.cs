@@ -20,13 +20,13 @@ namespace ChapooApplication.DAL
 
             StringBuilder sb = new StringBuilder();
 
-            string query = "INSERT INTO OrderItem (OrderId, MenuItemId, TableId, Count, OrderStatus, Comment) Values (@OrderId, @MenuItemId, @TableId, @Count, @OrderStatus, @Comment);";
+            string query = "INSERT INTO OrderItem (OrderMenuId, MenuItemId, TableId, Count, OrderStatus, Comment) Values (@OrderMenuId, @MenuItemId, @TableId, @Count, @OrderStatus, @Comment);";
 
             sb.Append(query);
 
             String sqlquery = sb.ToString();
 
-            SqlParameter OrderId = new SqlParameter("@OrderId", SqlDbType.Int, 3);
+            SqlParameter OrderId = new SqlParameter("@OrderMenuId", SqlDbType.Int, 3);
             SqlParameter MenuItemId = new SqlParameter("@MenuItemId", SqlDbType.Int, 5);
             SqlParameter TableId = new SqlParameter("@TableId", SqlDbType.Int);
             SqlParameter Count = new SqlParameter("@Count", SqlDbType.Int, 1);

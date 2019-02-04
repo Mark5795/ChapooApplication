@@ -19,7 +19,7 @@ namespace ChapooApplication.DAL
             SqlConnection sql = conn.Dbconnection();
             sql.Open();
 
-            string query = "Select * FROM Employee WHERE EmployeeId = @EmployeeId";
+            string query = "SELECT * FROM Employee WHERE EmployeeId = @EmployeeId";
 
             StringBuilder sb = new StringBuilder();            
                         
