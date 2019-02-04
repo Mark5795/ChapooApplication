@@ -31,6 +31,17 @@ namespace ChapooApplication.UI
             {
                 label_Overview.Text = "Kitchen Overview";
             }
+
+            ListView lv = listView_OrderOverview;
+            {
+                lv.View = View.Details;
+                lv.Columns.Add("Id", -2, HorizontalAlignment.Left);
+                lv.Columns.Add("Name", -2, HorizontalAlignment.Left);
+                lv.Columns.Add("Count", -2, HorizontalAlignment.Left);
+                lv.Columns.Add("Table", -2, HorizontalAlignment.Left);
+                lv.Columns.Add("Comment", -2, HorizontalAlignment.Left);
+            }
+
             GetOrders(function);
         }
 
@@ -43,7 +54,7 @@ namespace ChapooApplication.UI
                 ListViewItem row = new ListViewItem(Item.Order.OrderId.ToString());
                 row.SubItems.Add(Item.MenuItem.Name);
                 row.SubItems.Add(Item.Count.ToString());
-                row.SubItems.Add(Item.Table.ToString());
+                row.SubItems.Add(Item.Table.TableId.ToString());
                 row.SubItems.Add(Item.Comment);
                 row.Tag = Item;
                 listView_OrderOverview.Items.Add(row);

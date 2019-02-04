@@ -134,11 +134,13 @@
             // 
             // listView_OrderItems
             // 
+            this.listView_OrderItems.FullRowSelect = true;
             this.listView_OrderItems.Location = new System.Drawing.Point(1, 194);
             this.listView_OrderItems.Name = "listView_OrderItems";
             this.listView_OrderItems.Size = new System.Drawing.Size(322, 203);
             this.listView_OrderItems.TabIndex = 9;
             this.listView_OrderItems.UseCompatibleStateImageBehavior = false;
+            this.listView_OrderItems.View = System.Windows.Forms.View.Details;
             // 
             // NewOrderMenu
             // 

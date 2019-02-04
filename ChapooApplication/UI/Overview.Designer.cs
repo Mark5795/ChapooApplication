@@ -75,11 +75,14 @@
             // 
             // listView_OrderOverview
             // 
+            this.listView_OrderOverview.FullRowSelect = true;
+            this.listView_OrderOverview.GridLines = true;
             this.listView_OrderOverview.Location = new System.Drawing.Point(0, 38);
             this.listView_OrderOverview.Name = "listView_OrderOverview";
             this.listView_OrderOverview.Size = new System.Drawing.Size(800, 365);
-            this.listView_OrderOverview.TabIndex = 4;
+            this.listView_OrderOverview.TabIndex = 3;
             this.listView_OrderOverview.UseCompatibleStateImageBehavior = false;
+            this.listView_OrderOverview.View = System.Windows.Forms.View.Details;
             // 
             // Overview
             // 

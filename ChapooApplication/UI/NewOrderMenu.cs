@@ -30,9 +30,10 @@ namespace ChapooApplication.UI
             ListView lv = listView_OrderItems;
             {
                 lv.View = View.Details;
-                lv.Columns.Add("Id", -2, HorizontalAlignment.Left);
-                lv.Columns.Add("Naam", -2, HorizontalAlignment.Left);
-                lv.Columns.Add("Aantal", -2, HorizontalAlignment.Left);
+                //lv.Columns.Add("Id", -2, HorizontalAlignment.Left);
+                lv.Columns.Add("Name", 100, HorizontalAlignment.Left);
+                lv.Columns.Add("Count", -2, HorizontalAlignment.Left);
+                lv.Columns.Add("Comment", -2, HorizontalAlignment.Left);
             }
 
             additems(ChoosenItems);
@@ -73,9 +74,11 @@ namespace ChapooApplication.UI
 
             foreach (OrderItem choosenItem in choosenItems)
             {
-                ListViewItem lvi = new ListViewItem(choosenItem.OrderItemId.ToString());
-                lvi.SubItems.Add(choosenItem.MenuItem.Name);
+                //ListViewItem lvi = new ListViewItem(choosenItem.OrderItemId.ToString());
+                ListViewItem lvi = new ListViewItem(choosenItem.MenuItem.Name);
+                //lvi.SubItems.Add(choosenItem.MenuItem.Name);
                 lvi.SubItems.Add(choosenItem.Count.ToString());
+                lvi.SubItems.Add(choosenItem.Comment.ToString());
                 listView_OrderItems.Items.Add(lvi);
             }
 
